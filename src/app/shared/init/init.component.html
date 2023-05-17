@@ -1,7 +1,7 @@
 <form>
     <div class="mb-3 row">
-        <label for="table-filtering-search" class="col-xs-3 col-sm-auto col-form-label">Full text search:</label>
-        <div class="col-xs-3 col-sm-auto">
+        <label for="table-filtering-search" class="col-xs-3 col-sm-auto col-form-label">Busqueda:</label>
+        <div class="col-xs-1 col-sm-auto">
             <input id="table-filtering-search" class="form-control" type="text" [formControl]="filter" />
         </div>
     </div>
@@ -10,6 +10,7 @@
 <table class="table table-striped">
     <thead>
         <tr>
+            <th scope="col">#</th>
             <th scope="col">Entidad</th>
             <th scope="col">Objeto</th>
             <th scope="col">Fecha limite</th>
@@ -20,11 +21,13 @@
     </thead>
     <tbody>
         <tr *ngFor="let convocatoria of convocatorias$ | async; index as i">
+            <th scope="row">{{ i + 1 }}</th>
+
             <td><ngb-highlight [result]="convocatoria.entidad" [term]="filter.value"></ngb-highlight></td>
             <td><ngb-highlight [result]="convocatoria.objeto" [term]="filter.value"></ngb-highlight></td>
             <td><ngb-highlight [result]="convocatoria.presentacion" [term]="filter.value"></ngb-highlight></td>
             <td><ngb-highlight [result]="convocatoria.publicacion" [term]="filter.value"></ngb-highlight></td>
-            <td><a href="{{convocatoria.link}}">Ver Datos</a></td>
+            <td><a href="{{convocatoria.link}}" target="_blank">Ver Datos</a></td>
         </tr>
     </tbody>
 </table>
