@@ -5,7 +5,6 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
-import data from '../../../assets/convos.json';
 import { Convocatoria } from './convocatoria.interface';
 import { ConvocatoriaFilterPipe } from './convocatoriafilterpipe';
 import { DataService } from 'src/app/core/data.service';
@@ -25,17 +24,18 @@ import { HttpClient } from '@angular/common/http';
 export class InitComponent {
   convocatorias$: Observable<Convocatoria[]> | undefined;
   filter = new FormControl('', { nonNullable: true });
-  CONVOCATORIAS: Convocatoria[] = data;
+  CONVOCATORIAS: Convocatoria[] = [];
 
   constructor(pipe: ConvocatoriaFilterPipe, private dataService: DataService) {
     this.dataService.getJson().subscribe(data11 => {
       console.log("ultimo", data11);
       this.CONVOCATORIAS = data11;
+      this.convocatorias$ = this.filter.valueChanges.pipe(
+        startWith(''),
+        map((text) => this.search(text, pipe)),
+      );
     });
-    this.convocatorias$ = this.filter.valueChanges.pipe(
-      startWith(''),
-      map((text) => this.search(text, pipe)),
-    );
+
   }
   public search(text: string, pipe: PipeTransform): Convocatoria[] {
     return this.CONVOCATORIAS.filter((convocatoria) => {
