@@ -8,6 +8,8 @@ import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 import data from '../../../assets/convos.json';
 import { Convocatoria } from './convocatoria.interface';
 import { ConvocatoriaFilterPipe } from './convocatoriafilterpipe';
+import { DataService } from 'src/app/core/data.service';
+import { HttpClient } from '@angular/common/http';
 
 const CONVOCATORIAS: Convocatoria[] = data;
 function search(text: string, pipe: PipeTransform): Convocatoria[] {
@@ -17,7 +19,7 @@ function search(text: string, pipe: PipeTransform): Convocatoria[] {
       pipe.transform(convocatoria.entidad).includes(term) ||
       convocatoria.entidad.toLowerCase().includes(term) ||
       pipe.transform(convocatoria.objeto).includes(term) ||
-      convocatoria.objeto.toLowerCase().includes(term) 
+      convocatoria.objeto.toLowerCase().includes(term)
     );
   });
 }
@@ -27,18 +29,19 @@ function search(text: string, pipe: PipeTransform): Convocatoria[] {
   templateUrl: './init.component.html',
   styleUrls: ['./init.component.sass'],
   standalone: true,
-  imports: [ NgFor, AsyncPipe, ReactiveFormsModule, NgbTypeaheadModule],
+  imports: [NgFor, AsyncPipe, ReactiveFormsModule, NgbTypeaheadModule],
   providers: [ConvocatoriaFilterPipe]
 })
 
 export class InitComponent {
-	convocatorias$: Observable<Convocatoria[]> | undefined;
-	filter = new FormControl('', { nonNullable: true });
+  convocatorias$: Observable<Convocatoria[]> | undefined;
+  filter = new FormControl('', { nonNullable: true });
 
-	constructor(pipe: ConvocatoriaFilterPipe) {
-		this.convocatorias$ = this.filter.valueChanges.pipe(
-			startWith(''),
-			map((text) => search(text, pipe)),
-		);
-	}
+  constructor(pipe: ConvocatoriaFilterPipe, private dataService: DataService) {
+    this.dataService.getJson().subscribe(data11 => { console.log("ultimo",data11); });
+    this.convocatorias$ = this.filter.valueChanges.pipe(
+      startWith(''),
+      map((text) => search(text, pipe)),
+    );
+  }
 }

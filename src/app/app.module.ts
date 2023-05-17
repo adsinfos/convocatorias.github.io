@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { InitComponent } from './shared/init/init.component';
 import { ConvocatoriaFilterPipe } from './shared/init/convocatoriafilterpipe';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,10 +16,11 @@ import { ConvocatoriaFilterPipe } from './shared/init/convocatoriafilterpipe';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [HttpClient],
   bootstrap: [AppComponent],
-  
+
 })
 export class AppModule { }
