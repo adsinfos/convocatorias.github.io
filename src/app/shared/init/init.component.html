@@ -6,28 +6,29 @@
         </div>
     </div>
 </form>
+<div class="table-responsive ">
+    <table class="table table-striped ">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Entidad</th>
+                <th scope="col">Objeto</th>
+                <th scope="col">Fecha limite</th>
+                <th scope="col">Fecha pub.</th>
+                <th scope="col">Ver mas</th>
 
-<table class="table table-responsive table-striped ">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Entidad</th>
-            <th scope="col">Objeto</th>
-            <th scope="col">Fecha limite</th>
-            <th scope="col">Fecha pub.</th>
-            <th scope="col">Ver mas</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let convocatoria of convocatorias$ | async; index as i">
+                <th scope="row">{{ i + 1 }}</th>
 
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let convocatoria of convocatorias$ | async; index as i">
-            <th scope="row">{{ i + 1 }}</th>
-
-            <td><ngb-highlight [result]="convocatoria.entidad" [term]="filter.value"></ngb-highlight></td>
-            <td><ngb-highlight [result]="convocatoria.objeto" [term]="filter.value"></ngb-highlight></td>
-            <td><ngb-highlight [result]="convocatoria.presentacion" [term]="filter.value"></ngb-highlight></td>
-            <td><ngb-highlight [result]="convocatoria.publicacion" [term]="filter.value"></ngb-highlight></td>
-            <td><a href="{{convocatoria.link}}" target="_blank">Ver Datos</a></td>
-        </tr>
-    </tbody>
-</table>
+                <td><ngb-highlight [result]="convocatoria.entidad" [term]="filter.value"></ngb-highlight></td>
+                <td><ngb-highlight [result]="convocatoria.objeto" [term]="filter.value"></ngb-highlight></td>
+                <td><ngb-highlight [result]="convocatoria.presentacion" [term]="filter.value"></ngb-highlight></td>
+                <td><ngb-highlight [result]="convocatoria.publicacion" [term]="filter.value"></ngb-highlight></td>
+                <td><a href="{{convocatoria.link}}" target="_blank">Ver Datos</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
