@@ -41,11 +41,20 @@ export class InitComponent {
     return this.CONVOCATORIAS.filter((convocatoria) => {
       const term = text.toLowerCase();
       return (
-        pipe.transform(convocatoria.entidad).includes(term) ||
-        convocatoria.entidad.toLowerCase().includes(term) ||
-        pipe.transform(convocatoria.objeto).includes(term) ||
-        convocatoria.objeto.toLowerCase().includes(term)
+        pipe.transform(this.preparar(convocatoria.entidad)).includes(term) ||
+        this.preparar(convocatoria.entidad.toLowerCase()).includes(term) ||
+        pipe.transform(this.preparar(convocatoria.objeto)).includes(term) ||
+        this.preparar(convocatoria.objeto.toLowerCase()).includes(term)
       );
     });
+  }
+  public preparar(texto: string) {
+    let aux: string;
+    aux = texto.toLowerCase().replace("á", "a");
+    aux = aux.replace("é", "e");
+    aux = aux.replace("í", "i");
+    aux = aux.replace("ó", "o");
+    aux = aux.replace("ú", "u");
+    return aux;
   }
 }
