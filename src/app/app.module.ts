@@ -7,17 +7,21 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { InitComponent } from './shared/init/init.component';
 import { ConvocatoriaFilterPipe } from './shared/init/convocatoriafilterpipe';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { EstadisticaComponent } from './shared/estadistica/estadistica.component';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ConvocatoriaFilterPipe
+    ConvocatoriaFilterPipe,
+    EstadisticaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    NgChartsModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent],
