@@ -27,7 +27,7 @@ export class InitComponent {
   CONVOCATORIAS: Convocatoria[] = [];
 
   constructor(pipe: ConvocatoriaFilterPipe, private dataService: DataService) {
-    this.dataService.getJson().subscribe(data11 => {
+    this.dataService.getJson('assets/convos.json').subscribe(data11 => {
       console.log("ultimo", data11);
       this.CONVOCATORIAS = data11;
       this.convocatorias$ = this.filter.valueChanges.pipe(

@@ -6,5 +6,5 @@ import { Observable } from 'rxjs';
 
     constructor(private http: HttpClient) { }
 
-    getJson(): Observable<any> { return this.http.get('assets/convos.json'); }
+    getJson(url:string): Observable<any> { return this.http.get(url); }
 }
