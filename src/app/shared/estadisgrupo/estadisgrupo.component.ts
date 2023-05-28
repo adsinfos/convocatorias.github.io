@@ -10,6 +10,10 @@ import { EstadisticaTipo } from '../estadistipo/estadistica.tipo.interface';
   styleUrls: ['./estadisgrupo.component.sass']
 })
 export class EstadisgrupoComponent {
+  regresar() {
+    window.location.href = "https://adsinfo.me";
+
+  }
   title = 'Estadisticas';
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
@@ -54,7 +58,7 @@ export class EstadisgrupoComponent {
       }
       console.log(total);
       for (let clave in total) {
-        this.barChartData.datasets.push({data:total[clave], label:clave, backgroundColor:'#' + Math.floor(Math.random()*16777215).toString(16)});
+        this.barChartData.datasets.push({ data: total[clave], label: clave, backgroundColor: '#' + Math.floor(Math.random() * 16777215).toString(16) });
       }
 
       this.barChartData.labels = Array.from(fechas);

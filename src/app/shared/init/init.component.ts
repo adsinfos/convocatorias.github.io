@@ -22,6 +22,9 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class InitComponent {
+  regresar() {
+    window.location.href = "https://adsinfo.me";
+  }
   convocatorias$: Observable<Convocatoria[]> | undefined;
   filter = new FormControl('', { nonNullable: true });
   CONVOCATORIAS: Convocatoria[] = [];

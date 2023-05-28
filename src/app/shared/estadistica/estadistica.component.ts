@@ -9,6 +9,10 @@ import { BaseChartDirective } from 'ng2-charts';
   styleUrls: ['./estadistica.component.sass']
 })
 export class EstadisticaComponent {
+  regresar() {
+    window.location.href = "https://adsinfo.me";
+
+  }
   title = 'Estadisticas';
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
@@ -19,7 +23,7 @@ export class EstadisticaComponent {
   public barChartData: ChartConfiguration<'bar'>['data'] = {
     labels: [],
     datasets: [
-      { data: [], label: 'Convocatorias leidas', backgroundColor:'#426eff' }
+      { data: [], label: 'Convocatorias leidas', backgroundColor: '#426eff' }
     ]
   };
 
