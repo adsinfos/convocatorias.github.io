@@ -9,12 +9,14 @@ import { ConvocatoriaFilterPipe } from './shared/init/convocatoriafilterpipe';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { EstadisticaComponent } from './shared/estadistica/estadistica.component';
 import { NgChartsModule } from 'ng2-charts';
+import { EstadistipoComponent } from './shared/estadistipo/estadistipo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ConvocatoriaFilterPipe,
-    EstadisticaComponent
+    EstadisticaComponent,
+    EstadistipoComponent
   ],
   imports: [
     BrowserModule,
