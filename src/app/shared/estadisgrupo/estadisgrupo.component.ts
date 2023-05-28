@@ -24,7 +24,7 @@ export class EstadisgrupoComponent {
   };
 
   public barChartOptions: ChartConfiguration<'bar'>['options'] = {
-    responsive: true,
+    responsive: false,
   };
 
   constructor(private dataService: DataService) {
