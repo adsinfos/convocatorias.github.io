@@ -24,7 +24,7 @@ export class EstadisticaComponent {
   };
 
   public barChartOptions: ChartConfiguration<'bar'>['options'] = {
-    responsive: false,
+    responsive: true,
   };
 
   constructor(private dataService: DataService) {
