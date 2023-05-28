@@ -2,14 +2,14 @@ import { Component, ViewChild } from '@angular/core';
 import { ChartConfiguration } from 'chart.js';
 import { DataService } from 'src/app/core/data.service';
 import { BaseChartDirective } from 'ng2-charts';
-import { EstadisticaTipo } from './estadistica.tipo.interface';
+import { EstadisticaTipo } from '../estadistipo/estadistica.tipo.interface';
 
 @Component({
-  selector: 'app-estadistipo',
-  templateUrl: './estadistipo.component.html',
-  styleUrls: ['./estadistipo.component.sass']
+  selector: 'app-estadisgrupo',
+  templateUrl: './estadisgrupo.component.html',
+  styleUrls: ['./estadisgrupo.component.sass']
 })
-export class EstadistipoComponent {
+export class EstadisgrupoComponent {
   title = 'Estadisticas';
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
@@ -28,7 +28,7 @@ export class EstadistipoComponent {
   };
 
   constructor(private dataService: DataService) {
-    this.dataService.getJson('assets/esttipo.json').subscribe(data => {
+    this.dataService.getJson('assets/estagrupo.json').subscribe(data => {
       this.estadisticas = data;
       let grupos = new Set(this.estadisticas.map(d => d.grupo));
       let fechas = new Set(this.estadisticas.map(d => d.fecha));
@@ -58,6 +58,9 @@ export class EstadistipoComponent {
       }
 
       this.barChartData.labels = Array.from(fechas);
+
+
+
       this.chart?.update();
     });
   }
