@@ -9,4 +9,5 @@ export interface Convocatoria {
     publicacion: string;
     estado: string;
     link: string;
+    categoria: string;
   }

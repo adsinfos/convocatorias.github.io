@@ -13,7 +13,7 @@
 </form>
 
 <div class="table-responsive ">
-    <table class="table table-striped ">
+    <table class="table table-striped " [width]="100">
         <thead>
             <tr>
                 <th scope="col">#</th>
@@ -21,6 +21,8 @@
                 <th scope="col">Objeto</th>
                 <th scope="col">Fecha limite</th>
                 <th scope="col">Fecha pub.</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Categoria</th>
                 <th scope="col">Ver mas</th>
 
             </tr>
@@ -33,6 +35,8 @@
                 <td><ngb-highlight [result]="convocatoria.objeto" [term]="filter.value"></ngb-highlight></td>
                 <td><ngb-highlight [result]="convocatoria.presentacion" [term]="filter.value"></ngb-highlight></td>
                 <td><ngb-highlight [result]="convocatoria.publicacion" [term]="filter.value"></ngb-highlight></td>
+                <td><ngb-highlight [result]="convocatoria.tipo" [term]="filter.value"></ngb-highlight></td>
+                <td><ngb-highlight [result]="convocatoria.categoria" [term]="filter.value"></ngb-highlight></td>
                 <td><a href="{{convocatoria.link}}" target="_blank">Ver Datos</a></td>
             </tr>
         </tbody>
