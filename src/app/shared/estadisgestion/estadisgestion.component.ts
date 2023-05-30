@@ -3,6 +3,7 @@ import { ChartConfiguration, ChartType } from 'chart.js';
 import { DataService } from 'src/app/core/data.service';
 import { BaseChartDirective } from 'ng2-charts';
 import { EstadisticaTipo } from '../estadistipo/estadistica.tipo.interface';
+import { EstadisticaTipoGestion } from './estadisticagestion.interface';
 
 @Component({
   selector: 'app-estadisgestion',
@@ -19,8 +20,8 @@ export class EstadisgestionComponent {
   public doughnutChartType: ChartType = 'radar';
   public barChartLegend = true;
   public barChartPlugins = [];
-  estadisticas: EstadisticaTipo[] = [];
-
+  public estadisticas: EstadisticaTipo[] = [];
+  public todo: EstadisticaTipoGestion = { desde: "", datos: [] };
   public doughnutChartLabels: string[] = [];
 
   public doughnutChartOptions: ChartConfiguration<'radar'>['options'] = {
@@ -30,7 +31,9 @@ export class EstadisgestionComponent {
 
   constructor(private dataService: DataService) {
     this.dataService.getJson('assets/gestiones.json').subscribe(data => {
-      this.estadisticas = data;
+      this.todo = data;
+      this.estadisticas=this.todo.datos;
+      
       let grupos = new Set(this.estadisticas.map(d => d.grupo));
       let fechas = new Set(this.estadisticas.map(d => d.fecha));
       let datosPorGrupoYFecha: { [key: string]: { [key: string]: number } } = {};
