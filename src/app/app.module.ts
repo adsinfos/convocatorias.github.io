@@ -11,6 +11,7 @@ import { EstadisticaComponent } from './shared/estadistica/estadistica.component
 import { NgChartsModule } from 'ng2-charts';
 import { EstadistipoComponent } from './shared/estadistipo/estadistipo.component';
 import { EstadisgrupoComponent } from './shared/estadisgrupo/estadisgrupo.component';
+import { EstadisgestionComponent } from './shared/estadisgestion/estadisgestion.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { EstadisgrupoComponent } from './shared/estadisgrupo/estadisgrupo.compon
     ConvocatoriaFilterPipe,
     EstadisticaComponent,
     EstadistipoComponent,
-    EstadisgrupoComponent
+    EstadisgrupoComponent,
+    EstadisgestionComponent
   ],
   imports: [
     BrowserModule,

@@ -4,12 +4,14 @@ import { InitComponent } from './shared/init/init.component';
 import { EstadisticaComponent } from './shared/estadistica/estadistica.component';
 import { EstadistipoComponent } from './shared/estadistipo/estadistipo.component';
 import { EstadisgrupoComponent } from './shared/estadisgrupo/estadisgrupo.component';
+import { EstadisgestionComponent } from './shared/estadisgestion/estadisgestion.component';
 
 const routes: Routes = [
   { path: '', component: InitComponent },
   { path: 'estadistica', component: EstadisticaComponent },
   { path: 'estadistipo', component: EstadistipoComponent },
-  { path: 'estadisgrupo', component: EstadisgrupoComponent }
+  { path: 'estadisgrupo', component: EstadisgrupoComponent },
+  { path: 'estadisgestion', component: EstadisgestionComponent }
 
 ];
 
