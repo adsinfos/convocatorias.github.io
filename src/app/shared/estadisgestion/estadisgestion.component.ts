@@ -16,17 +16,17 @@ export class EstadisgestionComponent {
   }
   title = 'Estadisticas';
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
-  public doughnutChartType: ChartType = 'doughnut';
+  public doughnutChartType: ChartType = 'radar';
   public barChartLegend = true;
   public barChartPlugins = [];
   estadisticas: EstadisticaTipo[] = [];
 
   public doughnutChartLabels: string[] = [];
 
-  public doughnutChartOptions: ChartConfiguration<'doughnut'>['options'] = {
+  public doughnutChartOptions: ChartConfiguration<'radar'>['options'] = {
     responsive: true
   };
-  public doughnutChartDatasets: ChartConfiguration<'doughnut'>['data']['datasets'] = [];
+  public doughnutChartDatasets: ChartConfiguration<'radar'>['data']['datasets'] = [];
 
   constructor(private dataService: DataService) {
     this.dataService.getJson('assets/gestiones.json').subscribe(data => {
