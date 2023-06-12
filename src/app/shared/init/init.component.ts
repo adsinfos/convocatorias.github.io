@@ -49,10 +49,10 @@ export class InitComponent {
       const term = text.toLowerCase();
       return (
         (pipe.transform(this.preparar(convocatoria.entidad)).includes(term) ||
-        this.preparar(convocatoria.entidad.toLowerCase()).includes(term) ||
-        pipe.transform(this.preparar(convocatoria.objeto)).includes(term) ||
-        this.preparar(convocatoria.objeto.toLowerCase()).includes(term)) &&
-        ((text2 != "Todos" && text2 == convocatoria.tipo) || (text2=="Todos"))
+          this.preparar(convocatoria.entidad.toLowerCase()).includes(term) ||
+          pipe.transform(this.preparar(convocatoria.objeto)).includes(term) ||
+          this.preparar(convocatoria.objeto.toLowerCase()).includes(term)) &&
+        ((text2 != "Todos" && text2 == convocatoria.tipo) || (text2 == "Todos"))
       );
     });
   }
@@ -64,5 +64,8 @@ export class InitComponent {
     aux = aux.replace("ó", "o");
     aux = aux.replace("ú", "u");
     return aux;
+  }
+  ira(link: string) {
+    window.open(link, '_blank');
   }
 }
