@@ -30,7 +30,7 @@ export class InitComponent {
   CONVOCATORIAS: Convocatoria[] = [];
 
   constructor(pipe: ConvocatoriaFilterPipe, private dataService: DataService) {
-    
+
     this.dataService.getJson('assets/convos.json').subscribe(data11 => {
       console.log("ultimo", data11);
       this.CONVOCATORIAS = data11;
@@ -47,10 +47,11 @@ export class InitComponent {
     return this.CONVOCATORIAS.filter((convocatoria) => {
       const term = text.toLowerCase();
       return (
-        pipe.transform(this.preparar(convocatoria.entidad)).includes(term) ||
+        (pipe.transform(this.preparar(convocatoria.entidad)).includes(term) ||
         this.preparar(convocatoria.entidad.toLowerCase()).includes(term) ||
         pipe.transform(this.preparar(convocatoria.objeto)).includes(term) ||
-        this.preparar(convocatoria.objeto.toLowerCase()).includes(term)
+        this.preparar(convocatoria.objeto.toLowerCase()).includes(term)) &&
+        ((text2 != "Todos" && text2 == convocatoria.tipo) || (text2=="Todos"))
       );
     });
   }
