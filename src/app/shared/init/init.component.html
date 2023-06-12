@@ -5,7 +5,6 @@
         <div>
             <label for="table-filtering-search" class="col-xs-3 col-sm-auto col-form-label">Busqueda:</label>
             <div class="col-xs-1 col-sm-auto">
-                <input id="table-filtering-search2" class="form-control" type="text" [formControl]="filter3" />
                 <input id="table-filtering-search" class="form-control" type="text" [formControl]="filter" />
             </div>
         </div>
@@ -13,7 +12,7 @@
             <label for="table-filtering-search" class="col-xs-3 col-sm-auto col-form-label">Tipo de convocatoria:</label>
             <div class="col-xs-1 col-sm-auto">
                 <select class="form-select" aria-label="Default select example" id="tipo"  [formControl]="filter2">
-                    <option value="Todos" selected>Todos</option>
+                    <option value="-">Cualquiera</option>
                     <option value="Bienes">Bienes</option>
                     <option value="Consultoria">Consultoria</option>
                     <option value="Obras">Obras</option>
