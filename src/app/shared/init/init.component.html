@@ -2,11 +2,26 @@
 
 <form>
     <div class="mb-3 row">
-        <label for="table-filtering-search" class="col-xs-3 col-sm-auto col-form-label">Busqueda:</label>
-        <div class="col-xs-1 col-sm-auto">
-            <input id="table-filtering-search" class="form-control" type="text" [formControl]="filter" />
+        <div>
+            <label for="table-filtering-search" class="col-xs-3 col-sm-auto col-form-label">Busqueda:</label>
+            <div class="col-xs-1 col-sm-auto">
+                <input id="table-filtering-search" class="form-control" type="text" [formControl]="filter" />
+            </div>
         </div>
+        <div>
+            <label for="table-filtering-search" class="col-xs-3 col-sm-auto col-form-label">Tipo de convocatoria:</label>
 
+            <div class="col-xs-1 col-sm-auto">
+
+                <select class="form-select" aria-label="Default select example" id="tipo">
+                    <option value="Todos" selected>Todos</option>
+                    <option value="Bienes">Bienes</option>
+                    <option value="Consultoria">Consultoria</option>
+                    <option value="Obras">Obras</option>
+                    <option value="Servicios Generales">Servicios Generales</option>
+                </select>
+            </div>
+        </div>
     </div>
     <button type="button" class="btn btn-secondary btn-lg px-4 gap-3" (click)="regresar()">Regresar</button>
 
