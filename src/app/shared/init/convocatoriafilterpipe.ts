@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Convocatoria } from './convocatoria.interface';
 
 @Pipe({
-  name: 'convocatoriaFilter'
+  name: 'convocatoriaFilter',
+  pure: true
 })
 export class ConvocatoriaFilterPipe implements PipeTransform {
 
@@ -11,8 +12,8 @@ export class ConvocatoriaFilterPipe implements PipeTransform {
       return convocatorias;
     }
     term = term.toLowerCase();
-    return convocatorias.filter(convocatoria => 
-      Object.values(convocatoria).some(value => 
+    return convocatorias.filter(convocatoria =>
+      Object.values(convocatoria).some(value =>
         typeof value === 'string' && value.toLowerCase().includes(term)
       )
     );

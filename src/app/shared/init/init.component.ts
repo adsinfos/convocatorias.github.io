@@ -26,17 +26,18 @@ export class InitComponent {
   }
   convocatorias$: Observable<Convocatoria[]> | undefined;
   filter = new FormControl('', { nonNullable: true });
-  filter2 = new FormControl('-', { nonNullable: true });
+  filter2 = new FormControl('Todos', { nonNullable: true });
   CONVOCATORIAS: Convocatoria[] = [];
 
   constructor(pipe: ConvocatoriaFilterPipe, private dataService: DataService) {
 
     this.dataService.getJson('assets/convos.json').subscribe(data11 => {
-      console.log("ultimo", data11);
       this.CONVOCATORIAS = data11;
-      this.convocatorias$ = combineLatest([this.filter.valueChanges, this.filter2.valueChanges])
+      this.convocatorias$ = combineLatest([
+        this.filter.valueChanges.pipe(startWith('')),
+        this.filter2.valueChanges.pipe(startWith('Todos'))
+      ])
         .pipe(
-          startWith(['', 'Todos']),
           map(([text1, text2]) => this.search(text1, text2, pipe))
         );
     });
