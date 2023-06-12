@@ -1,8 +1,7 @@
 import { Component, PipeTransform } from '@angular/core';
 import { AsyncPipe, NgFor } from '@angular/common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-
-import { Observable } from 'rxjs';
+import { Observable, combineLatest } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 import { Convocatoria } from './convocatoria.interface';
@@ -27,20 +26,23 @@ export class InitComponent {
   }
   convocatorias$: Observable<Convocatoria[]> | undefined;
   filter = new FormControl('', { nonNullable: true });
+  filter2 = new FormControl('', { nonNullable: true });
+  filter3 = new FormControl('', { nonNullable: true });
   CONVOCATORIAS: Convocatoria[] = [];
 
   constructor(pipe: ConvocatoriaFilterPipe, private dataService: DataService) {
     this.dataService.getJson('assets/convos.json').subscribe(data11 => {
       console.log("ultimo", data11);
       this.CONVOCATORIAS = data11;
-      this.convocatorias$ = this.filter.valueChanges.pipe(
-        startWith(''),
-        map((text) => this.search(text, pipe)),
-      );
+      this.convocatorias$ = combineLatest([this.filter3.valueChanges, this.filter.valueChanges])
+        .pipe(
+          startWith(['', '']),
+          map(([text1, text2]) => this.search(text1, text2, pipe))
+        );
     });
 
   }
-  public search(text: string, pipe: PipeTransform): Convocatoria[] {
+  public search(text: string, text2: string, pipe: PipeTransform): Convocatoria[] {
     return this.CONVOCATORIAS.filter((convocatoria) => {
       const term = text.toLowerCase();
       return (
