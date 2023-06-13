@@ -13,6 +13,10 @@ import { EstadistipoComponent } from './shared/estadistipo/estadistipo.component
 import { EstadisgrupoComponent } from './shared/estadisgrupo/estadisgrupo.component';
 import { EstadisgestionComponent } from './shared/estadisgestion/estadisgestion.component';
 
+import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
+import { ShareIconsModule } from 'ngx-sharebuttons/icons';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +31,11 @@ import { EstadisgestionComponent } from './shared/estadisgestion/estadisgestion.
     AppRoutingModule,
     NgbModule,
     HttpClientModule,
-    NgChartsModule
+    NgChartsModule,
+    ShareButtonsModule.withConfig({
+      debug: false,
+    }),
+    ShareIconsModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent],
