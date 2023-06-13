@@ -28,7 +28,7 @@
 </form>
 
 <div class="table-responsive">
-    <table class="table table-sm">
+    <table class="table table-striped table-bordered">
         <thead>
             <tr>
                 <th scope="col">#</th>
@@ -49,7 +49,7 @@
 
                 <td><ngb-highlight [result]="convocatoria.entidad" [term]="filter.value"></ngb-highlight></td>
                 <td><ngb-highlight [result]="convocatoria.objeto" [term]="filter.value"></ngb-highlight></td>
-                <td><ngb-highlight [result]="convocatoria.presentacion" [term]="filter.value"></ngb-highlight>
+                <td><ngb-highlight [result]="convocatoria.presentacion" [term]="filter.value"></ngb-highlight><br>
                     <button type="button" class="btn btn-success">Vigente</button>
                 </td>
                 <td><ngb-highlight [result]="convocatoria.publicacion" [term]="filter.value"></ngb-highlight></td>
