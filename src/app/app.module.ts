@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 import { InitComponent } from './shared/init/init.component';
 import { ConvocatoriaFilterPipe } from './shared/init/convocatoriafilterpipe';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -15,6 +15,8 @@ import { EstadisgestionComponent } from './shared/estadisgestion/estadisgestion.
 
 import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 import { ShareIconsModule } from 'ngx-sharebuttons/icons';
+import { AsyncPipe, NgFor } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -24,7 +26,8 @@ import { ShareIconsModule } from 'ngx-sharebuttons/icons';
     EstadisticaComponent,
     EstadistipoComponent,
     EstadisgrupoComponent,
-    EstadisgestionComponent
+    EstadisgestionComponent,
+    InitComponent
   ],
   imports: [
     BrowserModule,
@@ -35,9 +38,13 @@ import { ShareIconsModule } from 'ngx-sharebuttons/icons';
     ShareButtonsModule.withConfig({
       debug: false,
     }),
-    ShareIconsModule
+    ShareIconsModule,
+    NgFor, AsyncPipe, ReactiveFormsModule, NgbTypeaheadModule
   ],
-  providers: [HttpClient],
+  providers: [
+    HttpClient,
+    ConvocatoriaFilterPipe
+  ],
   bootstrap: [AppComponent],
 
 })

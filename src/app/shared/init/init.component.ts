@@ -14,10 +14,7 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-init',
   templateUrl: './init.component.html',
-  styleUrls: ['./init.component.sass'],
-  standalone: true,
-  imports: [NgFor, AsyncPipe, ReactiveFormsModule, NgbTypeaheadModule],
-  providers: [ConvocatoriaFilterPipe]
+  styleUrls: ['./init.component.sass']
 })
 
 export class InitComponent {
@@ -33,6 +30,7 @@ export class InitComponent {
 
     this.dataService.getJson('assets/convos.json').subscribe(data11 => {
       this.CONVOCATORIAS = data11;
+
       this.convocatorias$ = combineLatest([
         this.filter.valueChanges.pipe(startWith('')),
         this.filter2.valueChanges.pipe(startWith('Todos'))
@@ -40,6 +38,14 @@ export class InitComponent {
         .pipe(
           map(([text1, text2]) => this.search(text1, text2, pipe))
         );
+      this.convocatorias$.forEach(evento => {
+        Object.defineProperty(evento, 'show', {
+          value: false,
+          writable: true,
+          enumerable: true,
+          configurable: true
+        });
+      });
     });
 
   }
@@ -67,5 +73,9 @@ export class InitComponent {
   }
   ira(link: string) {
     window.open(link, '_blank');
+  }
+  compartir(compa: Convocatoria) {
+    //compa.compartir = !compa.compartir ;
+    console.log(compa);
   }
 }
