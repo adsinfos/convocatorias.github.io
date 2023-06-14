@@ -53,18 +53,26 @@
                     <td><ngb-highlight [result]="convocatoria.entidad" [term]="filter.value"></ngb-highlight></td>
                     <td><ngb-highlight [result]="convocatoria.objeto" [term]="filter.value"></ngb-highlight></td>
                     <td><ngb-highlight [result]="convocatoria.presentacion" [term]="filter.value"></ngb-highlight><br>
-                        <button type="button" class="btn btn-success">Vigente</button>
+                        <button
+                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                            type="button" class="btn btn-success">Vigente</button>
                     </td>
                     <td><ngb-highlight [result]="convocatoria.publicacion" [term]="filter.value"></ngb-highlight></td>
                     <td>
-                        <button type="button" class="btn btn-primary" (click)='ira(convocatoria.link)'>Ver</button>
-                        <button type="button" class="btn btn-info"
-                            (click)="convocatoria.show = !convocatoria.show">Compartir</button>
+                        <div class="d-grid gap-2">
+                            <button
+                                style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                                type="button" class="btn btn-primary" (click)='ira(convocatoria.link)'>Ver</button>
+                            <button
+                                style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                                type="button" class="btn btn-info"
+                                (click)="convocatoria.show = !convocatoria.show">Compartir</button>
+                        </div>
                     </td>
 
                     <td><ngb-highlight [result]="convocatoria.tipo" [term]="filter.value"></ngb-highlight></td>
                     <td><ngb-highlight [result]="convocatoria.categoria" [term]="filter.value"></ngb-highlight></td>
-    
+
                 </tr>
                 <tr *ngIf="convocatoria.show">
                     <td colspan="5"></td>
@@ -72,7 +80,8 @@
                         <share-buttons theme="circles-dark"
                             [include]="['copy', 'facebook', 'linkedin', 'sms', 'telegram', 'twitter', 'whatsapp','messenger','mail']"
                             [showIcon]="true" [showText]="false" url="{{convocatoria.link}}"
-                            title="{{convocatoria.entidad}}" description="{{convocatoria.entidad}} - {{convocatoria.objeto}}">
+                            title="{{convocatoria.entidad}}"
+                            description="{{convocatoria.entidad}} - {{convocatoria.objeto}}">
                         </share-buttons>
                     </td>
 
