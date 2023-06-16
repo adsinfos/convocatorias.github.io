@@ -26,6 +26,7 @@
     <button type="button" class="btn btn-secondary btn-lg px-4 gap-3" (click)="regresar()">Regresar</button>
 
 </form>
+<ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="this.len" [maxSize]="5"></ngb-pagination>
 
 <div class="table-responsive">
 
