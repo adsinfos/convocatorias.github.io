@@ -25,7 +25,9 @@ export class InitComponent {
   filter = new FormControl('', { nonNullable: true });
   filter2 = new FormControl('Todos', { nonNullable: true });
   CONVOCATORIAS: Convocatoria[] = [];
-
+  len: number = 0;
+  page: number = 1;
+  pageSize: number = 10;
   constructor(pipe: ConvocatoriaFilterPipe, private dataService: DataService) {
 
     this.dataService.getJson('assets/convos.json').subscribe(data11 => {
@@ -45,6 +47,10 @@ export class InitComponent {
           enumerable: true,
           configurable: true
         });
+      });
+      this.convocatorias$.subscribe(array => {
+        console.log(array.length);
+        this.len = array.length;
       });
     });
 

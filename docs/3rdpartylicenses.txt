@@ -689,6 +689,9 @@ terms above.
 ng2-charts
 ISC
 
+ngx-pipes
+MIT
+
 ngx-sharebuttons
 MIT
 

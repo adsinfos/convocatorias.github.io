@@ -17,6 +17,7 @@ import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 import { AsyncPipe, NgFor } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgPipesModule  } from 'ngx-pipes';
 
 
 @NgModule({
@@ -39,13 +40,16 @@ import { ReactiveFormsModule } from '@angular/forms';
       debug: false,
     }),
     ShareIconsModule,
-    NgFor, AsyncPipe, ReactiveFormsModule, NgbTypeaheadModule
+    NgFor, AsyncPipe, ReactiveFormsModule, NgbTypeaheadModule, NgPipesModule  
   ],
   providers: [
     HttpClient,
     ConvocatoriaFilterPipe
   ],
   bootstrap: [AppComponent],
-
+  exports: [
+    // otros módulos o componentes
+    NgPipesModule
+  ]
 })
 export class AppModule { }

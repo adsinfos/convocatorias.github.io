@@ -46,18 +46,23 @@
             </tr>
         </thead>
         <tbody>
-            <ng-container *ngFor="let convocatoria of convocatorias$ | async; index as i">
+            <ng-container
+                *ngFor="let convocatoria of convocatorias$ | async | slice: (page-1) * pageSize : page * pageSize; index as i">
                 <tr>
                     <th scope="row" attr.rowspan="{{convocatoria.show==true?2:1}}">{{ i + 1 }}</th>
 
-                    <td attr.rowspan="{{convocatoria.show==true?2:1}}"><ngb-highlight [result]="convocatoria.entidad" [term]="filter.value"></ngb-highlight></td>
-                    <td attr.rowspan="{{convocatoria.show==true?2:1}}"><ngb-highlight [result]="convocatoria.objeto" [term]="filter.value"></ngb-highlight></td>
-                    <td attr.rowspan="{{convocatoria.show==true?2:1}}"><ngb-highlight [result]="convocatoria.presentacion" [term]="filter.value"></ngb-highlight><br>
+                    <td attr.rowspan="{{convocatoria.show==true?2:1}}"><ngb-highlight [result]="convocatoria.entidad"
+                            [term]="filter.value"></ngb-highlight></td>
+                    <td attr.rowspan="{{convocatoria.show==true?2:1}}"><ngb-highlight [result]="convocatoria.objeto"
+                            [term]="filter.value"></ngb-highlight></td>
+                    <td attr.rowspan="{{convocatoria.show==true?2:1}}"><ngb-highlight
+                            [result]="convocatoria.presentacion" [term]="filter.value"></ngb-highlight><br>
                         <button
                             style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
                             type="button" class="btn btn-success">Vigente</button>
                     </td>
-                    <td attr.rowspan="{{convocatoria.show==true?2:1}}"><ngb-highlight [result]="convocatoria.publicacion" [term]="filter.value"></ngb-highlight></td>
+                    <td attr.rowspan="{{convocatoria.show==true?2:1}}"><ngb-highlight
+                            [result]="convocatoria.publicacion" [term]="filter.value"></ngb-highlight></td>
                     <td>
                         <div class="d-grid gap-2">
                             <button
@@ -75,7 +80,7 @@
 
                 </tr>
                 <tr *ngIf="convocatoria.show">
-                    
+
                     <td colspan="3">
                         <share-buttons theme="circles-dark"
                             [include]="['copy', 'facebook', 'linkedin', 'sms', 'telegram', 'twitter', 'whatsapp','messenger','mail']"
@@ -90,3 +95,4 @@
         </tbody>
     </table>
 </div>
+<ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="this.len" [maxSize]="5"></ngb-pagination>
