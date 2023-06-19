@@ -29,6 +29,8 @@
             "assets": [
               "src/favicon.ico",
               "src/CNAME",
+              "src/consultorias-vigentes.html",
+              "src/convocatorias-vigentes.html",
               "src/assets"
             ],
             "styles": [
