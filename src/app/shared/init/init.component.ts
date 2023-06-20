@@ -8,6 +8,7 @@ import { Convocatoria } from './convocatoria.interface';
 import { ConvocatoriaFilterPipe } from './convocatoriafilterpipe';
 import { DataService } from 'src/app/core/data.service';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
 
 
@@ -28,14 +29,19 @@ export class InitComponent {
   len: number = 0;
   page: number = 1;
   pageSize: number = 10;
-  constructor(pipe: ConvocatoriaFilterPipe, private dataService: DataService) {
-
+  dat: string | null = "";
+  constructor(private activatedRoute: ActivatedRoute, pipe: ConvocatoriaFilterPipe, private dataService: DataService) {
+    this.dat = this.activatedRoute.snapshot.paramMap.get('data') || null;
+    if (!(this.dat == "Bienes" || this.dat == "Obras" || this.dat == "Servicios Generales" || this.dat == "Consultoria")) {
+      this.dat == "Todos";
+    }
+    this.filter2 = new FormControl(this.dat == null ? "Todos" : this.dat , { nonNullable: true });
     this.dataService.getJson('assets/convos.json').subscribe(data11 => {
       this.CONVOCATORIAS = data11;
 
       this.convocatorias$ = combineLatest([
         this.filter.valueChanges.pipe(startWith('')),
-        this.filter2.valueChanges.pipe(startWith('Todos'))
+        this.filter2.valueChanges.pipe(startWith(this.dat == null ? "Todos" : this.dat))
       ])
         .pipe(
           map(([text1, text2]) => this.search(text1, text2, pipe))
@@ -49,14 +55,12 @@ export class InitComponent {
         });
       });
       this.convocatorias$.subscribe(array => {
-        console.log(array.length);
         this.len = array.length;
       });
     });
 
   }
   public search(text: string, text2: string, pipe: PipeTransform): Convocatoria[] {
-    console.log('entrando');
     return this.CONVOCATORIAS.filter((convocatoria) => {
       const term = text.toLowerCase();
       return (

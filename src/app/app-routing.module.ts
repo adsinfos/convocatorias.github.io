@@ -11,8 +11,8 @@ const routes: Routes = [
   { path: 'estadistica', component: EstadisticaComponent },
   { path: 'estadistipo', component: EstadistipoComponent },
   { path: 'estadisgrupo', component: EstadisgrupoComponent },
-  { path: 'estadisgestion', component: EstadisgestionComponent }
-
+  { path: 'estadisgestion', component: EstadisgestionComponent },
+  { path: ':data', component: InitComponent }
 ];
 
 @NgModule({
