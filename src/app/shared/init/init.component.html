@@ -27,9 +27,7 @@
 
 </form>
 <p></p>
-<p>
-    <sense [config]="config"></sense>
-</p>
+
 <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="this.len" [maxSize]="5"></ngb-pagination>
 
 <div class="table-responsive">
@@ -98,7 +96,7 @@
                 </tr>
                 <ng-container *ngIf="i%3==0">
                     <tr >
-                        <td colspan="8">  aqui
+                        <td colspan="8"> 
                             <sense [config]="config"></sense>
                         </td>
                     </tr>
