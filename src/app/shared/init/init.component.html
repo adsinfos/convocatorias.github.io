@@ -92,6 +92,11 @@
                     </td>
 
                 </tr>
+                <ng-container *ngIf="i%3==0">
+                    <tr colspam="8">
+                        <sense [config]="config"></sense>
+                    </tr>
+                </ng-container>
             </ng-container>
         </tbody>
     </table>

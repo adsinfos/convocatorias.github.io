@@ -9,6 +9,7 @@ import { ConvocatoriaFilterPipe } from './convocatoriafilterpipe';
 import { DataService } from 'src/app/core/data.service';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
+import { SenseConfiguration } from '../ads/sense/config/sense.configuration';
 
 
 
@@ -30,7 +31,19 @@ export class InitComponent {
   page: number = 1;
   pageSize: number = 10;
   dat: string | null = "";
+  public config: any;
+
+
   constructor(private activatedRoute: ActivatedRoute, pipe: ConvocatoriaFilterPipe, private dataService: DataService) {
+    this.config = {} as SenseConfiguration;
+
+    this.config.tipo = "infeed";
+    this.config.dataadclient = "ca-pub-9676834375313066";
+    this.config.dataadformat = "fluid";
+    this.config.dataadslot = "2686529353";
+    this.config.dataadqlayoutkey = "-gm-d+x-3h+7r";
+    this.config.style = "display:block";
+    
     this.dat = this.activatedRoute.snapshot.paramMap.get('data') || null;
     if (!(this.dat == "Bienes" || this.dat == "Obras" || this.dat == "Servicios Generales" || this.dat == "Consultoria")) {
       this.dat == "Todos";

@@ -18,6 +18,7 @@ import { ShareIconsModule } from 'ngx-sharebuttons/icons';
 import { AsyncPipe, NgFor } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgPipesModule  } from 'ngx-pipes';
+import { SenseComponent } from './shared/ads/sense/sense.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { NgPipesModule  } from 'ngx-pipes';
     EstadistipoComponent,
     EstadisgrupoComponent,
     EstadisgestionComponent,
-    InitComponent
+    InitComponent,
+    SenseComponent
   ],
   imports: [
     BrowserModule,

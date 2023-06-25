@@ -1,0 +1,17 @@
+<div #divcito>
+    <ng-container *ngIf="this.config.tipo=='display'">
+        <ins class="adsbygoogle" attr.style="{{this.config.style}}" attr.data-ad-client="{{this.config.dataadclient}}"
+            attr.data-ad-slot="{{this.config.dataadslot}}" attr.data-ad-format="{{this.config.dataadformat}}"
+            attr.data-full-width-responsive="{{this.config.datafullwidthresponsive}}">
+        </ins>
+    </ng-container>
+    <ng-container *ngIf="this.config.tipo=='infeed'">
+        <ins class="adsbygoogle" attr.style="{{this.config.style}}" attr.data-ad-client="{{this.config.dataadclient}}"
+            attr.data-ad-slot="{{this.config.dataadslot}}" attr.data-ad-format="{{this.config.dataadformat}}"
+            attr.data-ad-layout-key="{{this.config.dataadqlayoutkey}}">
+        </ins>
+    </ng-container>
+    <ng-container *ngIf="this.config.tipo!='infeed' && this.config.tipo!='display'">
+        tipo de anuncio no permitido
+    </ng-container>
+</div>
