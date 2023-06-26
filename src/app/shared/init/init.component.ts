@@ -41,7 +41,7 @@ export class InitComponent {
     this.config.dataadclient = "ca-pub-9676834375313066";
     this.config.dataadformat = "fluid";
     this.config.dataadslot = "2686529353";
-    this.config.dataadqlayoutkey = "-gm-d+x-3h+7r";
+    this.config.dataadqlayoutkey = "-gc-v+5r-7l-18";
     this.config.style = "display:block";
     
     this.dat = this.activatedRoute.snapshot.paramMap.get('data') || null;
