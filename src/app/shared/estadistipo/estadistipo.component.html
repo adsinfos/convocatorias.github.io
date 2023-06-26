@@ -1,11 +1,10 @@
 <img class="logo" src="assets/estadistica.png" alt="image">
 <h3>Convocatorias por tipo de Clasificación SICOES</h3>
 
-<canvas baseChart class="chart"
-        [data]="barChartData"
-        [options]="barChartOptions"
-        [plugins]="barChartPlugins"
-        [legend]="barChartLegend"
-        [type]="'bar'">
+<canvas baseChart class="chart" [data]="barChartData" [options]="barChartOptions" [plugins]="barChartPlugins"
+        [legend]="barChartLegend" [type]="'bar'">
 </canvas>
 <button type="button" class="btn btn-secondary btn-lg px-4 gap-3" (click)="regresar()">Regresar</button>
+<p>
+        <sense [config]="configm"></sense>
+</p>

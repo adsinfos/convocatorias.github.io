@@ -3,6 +3,7 @@ import { ChartConfiguration } from 'chart.js';
 import { DataService } from 'src/app/core/data.service';
 import { BaseChartDirective } from 'ng2-charts';
 import { EstadisticaTipo } from './estadistica.tipo.interface';
+import { SenseConfiguration } from '../ads/sense/config/sense.configuration';
 
 @Component({
   selector: 'app-estadistipo',
@@ -15,7 +16,7 @@ export class EstadistipoComponent {
   }
   title = 'Estadisticas';
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
-
+  public configm: any;
   public barChartLegend = true;
   public barChartPlugins = [];
   estadisticas: EstadisticaTipo[] = [];
@@ -31,6 +32,14 @@ export class EstadistipoComponent {
   };
 
   constructor(private dataService: DataService) {
+    this.configm = {} as SenseConfiguration;
+
+    this.configm.tipo = "multiple";
+    this.configm.dataadclient = "ca-pub-9676834375313066";
+    this.configm.dataadformat = "autorelaxed";
+    this.configm.dataadslot = "8756238946";
+    this.configm.style = "display:block";
+
     this.dataService.getJson('assets/esttipo.json').subscribe(data => {
       this.estadisticas = data;
       let grupos = new Set(this.estadisticas.map(d => d.grupo));
