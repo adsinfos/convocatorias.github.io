@@ -1,7 +1,7 @@
 export interface Convocl {
     id: string;
     title: string;
-    decription: string;
+    description: string;
     status: string;
     monto: string;
     responsables: string;

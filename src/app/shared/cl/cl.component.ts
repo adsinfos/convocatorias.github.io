@@ -69,8 +69,8 @@ export class ClComponent {
           this.preparar(convocatoria.responsables.toLowerCase()).includes(term) ||
           pipe.transform(this.preparar(convocatoria.title)).includes(term) ||
           this.preparar(convocatoria.title.toLowerCase()).includes(term) ||
-          pipe.transform(this.preparar(convocatoria.decription)).includes(term) ||
-          this.preparar(convocatoria.decription.toLowerCase()).includes(term)
+          pipe.transform(this.preparar(convocatoria.description)).includes(term) ||
+          this.preparar(convocatoria.description.toLowerCase()).includes(term)
         )
       );
     });
@@ -78,6 +78,7 @@ export class ClComponent {
 
   public preparar(texto: string) {
     let aux: string;
+    console.log("textito:",texto);
     aux = texto.toLowerCase().replace("á", "a");
     aux = aux.replace("é", "e");
     aux = aux.replace("í", "i");

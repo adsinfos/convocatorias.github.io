@@ -42,16 +42,16 @@
                             [result]="convocatoria.responsables" [term]="filter.value"></ngb-highlight></td>
                     <td attr.rowspan="{{convocatoria.show==true?2:1}}"><ngb-highlight [result]="convocatoria.title"
                             [term]="filter.value"></ngb-highlight></td>
-                    <td attr.rowspan="{{convocatoria.show==true?2:1}}"><ngb-highlight [result]="convocatoria.decription"
+                    <td attr.rowspan="{{convocatoria.show==true?2:1}}"><ngb-highlight [result]="convocatoria.description"
                             [term]="filter.value"></ngb-highlight></td>
                     <td attr.rowspan="{{convocatoria.show==true?2:1}}"><ngb-highlight
-                            [result]="convocatoria.fechaLimite" [term]="filter.value"></ngb-highlight><br>
+                            [result]="convocatoria.fechaPublicacion" [term]="filter.value"></ngb-highlight><br>
                         <button
                             style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
                             type="button" class="btn btn-success">Vigente</button>
                     </td>
                     <td attr.rowspan="{{convocatoria.show==true?2:1}}"><ngb-highlight
-                            [result]="convocatoria.fechaPublicacion" [term]="filter.value"></ngb-highlight></td>
+                            [result]="convocatoria.fechaLimite" [term]="filter.value"></ngb-highlight></td>
                     <td>
                         <div class="d-grid gap-2">
                             <button
@@ -68,7 +68,7 @@
                 </tr>
                 <tr *ngIf="convocatoria.show">
 
-                    <td colspan="3">
+                    <td colspan="1">
                         <share-buttons theme="circles-dark"
                             [include]="['copy', 'facebook', 'linkedin', 'sms', 'telegram', 'twitter', 'whatsapp','messenger','mail']"
                             [showIcon]="true" [showText]="false" url="{{convocatoria.link}}"
