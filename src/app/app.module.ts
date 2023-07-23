@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
 import { InitComponent } from './shared/init/init.component';
-import { ConvocatoriaFilterPipe } from './shared/init/convocatoriafilterpipe';
+import { ConvocatoriaFilterPipe } from './shared/bo/convocatoriafilterpipe';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { EstadisticaComponent } from './shared/estadistica/estadistica.component';
 import { NgChartsModule } from 'ng2-charts';
@@ -19,6 +19,9 @@ import { AsyncPipe, NgFor } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgPipesModule  } from 'ngx-pipes';
 import { SenseComponent } from './shared/ads/sense/sense.component';
+import { BoComponent } from './shared/bo/bo.component';
+import { ClComponent } from './shared/cl/cl.component';
+import { ConvoChileFilterPipe } from './shared/cl/chilefilterpipe';
 
 
 @NgModule({
@@ -30,7 +33,9 @@ import { SenseComponent } from './shared/ads/sense/sense.component';
     EstadisgrupoComponent,
     EstadisgestionComponent,
     InitComponent,
-    SenseComponent
+    SenseComponent,
+    BoComponent,
+    ClComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +51,8 @@ import { SenseComponent } from './shared/ads/sense/sense.component';
   ],
   providers: [
     HttpClient,
-    ConvocatoriaFilterPipe
+    ConvocatoriaFilterPipe,
+    ConvoChileFilterPipe 
   ],
   bootstrap: [AppComponent],
   exports: [

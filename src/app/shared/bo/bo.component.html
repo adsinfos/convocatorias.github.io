@@ -1,0 +1,111 @@
+<img class="logo" src="assets/logo.png" alt="image">
+
+<form>
+    <div class="mb-3 row">
+        <div>
+            <label for="table-filtering-search" class="col-xs-3 col-sm-auto col-form-label">Busqueda:</label>
+            <div class="col-xs-1 col-sm-auto">
+                <input id="table-filtering-search" class="form-control" type="text" [formControl]="filter" />
+            </div>
+        </div>
+        <div>
+            <label for="table-filtering-search" class="col-xs-3 col-sm-auto col-form-label">Tipo de
+                convocatoria:</label>
+            <div class="col-xs-1 col-sm-auto">
+                <select class="form-select" aria-label="Default select example" id="tipo" [formControl]="filter2">
+                    <option value="-">Escoja un tipo</option>
+                    <option value="Todos">Todos</option>
+                    <option value="Bienes">Bienes</option>
+                    <option value="Consultoria">Consultoria</option>
+                    <option value="Obras">Obras</option>
+                    <option value="Servicios Generales">Servicios Generales</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <button type="button" class="btn btn-secondary btn-lg px-4 gap-3" (click)="regresar()">Regresar</button>
+
+</form>
+<p></p>
+
+<ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="this.len" [maxSize]="5"></ngb-pagination>
+
+<div class="table-responsive">
+
+
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Entidad</th>
+                <th scope="col">Objeto</th>
+                <th scope="col">Fecha limite</th>
+                <th scope="col">Fecha pub.</th>
+                <th scope="col">Ver datos CUCE</th>
+
+                <th scope="col">Tipo</th>
+                <th scope="col">Categoria</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container
+                *ngFor="let convocatoria of convocatorias$ | async | slice: (page-1) * pageSize : page * pageSize; index as i">
+                <tr>
+                    <th scope="row" attr.rowspan="{{convocatoria.show==true?2:1}}">{{ i + 1 }}</th>
+
+                    <td attr.rowspan="{{convocatoria.show==true?2:1}}"><ngb-highlight [result]="convocatoria.entidad"
+                            [term]="filter.value"></ngb-highlight></td>
+                    <td attr.rowspan="{{convocatoria.show==true?2:1}}"><ngb-highlight [result]="convocatoria.objeto"
+                            [term]="filter.value"></ngb-highlight></td>
+                    <td attr.rowspan="{{convocatoria.show==true?2:1}}"><ngb-highlight
+                            [result]="convocatoria.presentacion" [term]="filter.value"></ngb-highlight><br>
+                        <button
+                            style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                            type="button" class="btn btn-success">Vigente</button>
+                    </td>
+                    <td attr.rowspan="{{convocatoria.show==true?2:1}}"><ngb-highlight
+                            [result]="convocatoria.publicacion" [term]="filter.value"></ngb-highlight></td>
+                    <td>
+                        <div class="d-grid gap-2">
+                            <button
+                                style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                                type="button" class="btn btn-primary" (click)='ira(convocatoria.link)'>Ver</button>
+                            <button
+                                style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                                type="button" class="btn btn-info"
+                                (click)="convocatoria.show = !convocatoria.show">Compartir</button>
+                        </div>
+                    </td>
+
+                    <td><ngb-highlight [result]="convocatoria.tipo" [term]="filter.value"></ngb-highlight></td>
+                    <td><ngb-highlight [result]="convocatoria.categoria" [term]="filter.value"></ngb-highlight></td>
+
+                </tr>
+                <tr *ngIf="convocatoria.show">
+
+                    <td colspan="3">
+                        <share-buttons theme="circles-dark"
+                            [include]="['copy', 'facebook', 'linkedin', 'sms', 'telegram', 'twitter', 'whatsapp','messenger','mail']"
+                            [showIcon]="true" [showText]="false" url="{{convocatoria.linkCorto}}"
+                            title="{{convocatoria.entidad}}"
+                            description="{{convocatoria.entidad}} - {{convocatoria.objeto}}">
+                        </share-buttons>
+                    </td>
+
+                </tr>
+                <ng-container *ngIf="i%3==0">
+                    <tr >
+                        <td colspan="8"> 
+                            <sense [config]="config"></sense>
+                        </td>
+                    </tr>
+                </ng-container>
+            </ng-container>
+        </tbody>
+    </table>
+</div>
+<ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="this.len" [maxSize]="5"></ngb-pagination>
+<p>
+    <sense [config]="config"></sense>
+</p>
