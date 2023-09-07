@@ -45,13 +45,13 @@
                     <td attr.rowspan="{{convocatoria.show==true?2:1}}"><ngb-highlight [result]="convocatoria.description"
                             [term]="filter.value"></ngb-highlight></td>
                     <td attr.rowspan="{{convocatoria.show==true?2:1}}"><ngb-highlight
-                            [result]="convocatoria.fechaPublicacion" [term]="filter.value"></ngb-highlight><br>
+                            [result]="convocatoria.fechaLimite" [term]="filter.value"></ngb-highlight><br>
                         <button
                             style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
                             type="button" class="btn btn-success">Vigente</button>
                     </td>
                     <td attr.rowspan="{{convocatoria.show==true?2:1}}"><ngb-highlight
-                            [result]="convocatoria.fechaLimite" [term]="filter.value"></ngb-highlight></td>
+                            [result]="convocatoria.fechaPublicacion" [term]="filter.value"></ngb-highlight></td>
                     <td>
                         <div class="d-grid gap-2">
                             <button
