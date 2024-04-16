@@ -17,7 +17,7 @@ export class InitComponent {
     if ((this.dat == "Bienes" || this.dat == "Obras" || this.dat == "Servicios Generales" || this.dat == "Consultoria")) {
       this.router.navigate(["bo/" + this.dat]);
     } else {
-      window.location.href = "http://homecito.adsinfo.me";
+      window.location.href = "http://homecito.infobots.org";
     }
 
   }

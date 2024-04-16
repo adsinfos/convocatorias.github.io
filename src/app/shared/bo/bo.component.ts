@@ -17,7 +17,7 @@ import { Convocatoria } from './convocatoria.interface';
 })
 export class BoComponent {
   regresar() {
-    window.location.href = "https://adsinfo.me";
+    window.location.href = "https://infobots.org";
   }
   convocatorias$: Observable<Convocatoria[]> | undefined;
   filter = new FormControl('', { nonNullable: true });

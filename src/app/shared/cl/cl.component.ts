@@ -25,7 +25,7 @@ export class ClComponent {
   public config: any;
 
   regresar() {
-    window.location.href = "https://adsinfo.me";
+    window.location.href = "https://infobots.org";
   }
 
   constructor(private activatedRoute: ActivatedRoute, pipe: ConvoChileFilterPipe, private dataService: DataService) {

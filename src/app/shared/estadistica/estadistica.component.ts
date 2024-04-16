@@ -11,7 +11,7 @@ import { SenseConfiguration } from '../ads/sense/config/sense.configuration';
 })
 export class EstadisticaComponent {
   regresar() {
-    window.location.href = "https://adsinfo.me";
+    window.location.href = "https://infobots.org";
 
   }
   title = 'Estadisticas';
